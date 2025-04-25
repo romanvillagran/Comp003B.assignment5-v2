@@ -1,4 +1,7 @@
-
+﻿// Author:        Roman Villagran
+// Course:         COMP‑003B
+// Faculty Name:   Jonathan Cruz
+// Purpose:        Demonstrate CRUD operations via ASP.NET Core Web API
 namespace Comp003B.assignment5_v2
 {
     public class Program
@@ -12,13 +15,17 @@ namespace Comp003B.assignment5_v2
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.MapOpenApi();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();
